@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Gases de Efecto Invernadero | Eco-Life</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+  /* Reset & base */
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+  body {
+    font-family: 'Poppins', sans-serif;
+    background: linear-gradient(to bottom, #2c3e50 0%, #bdc3c7 100%);
+    color: #1c2833;
+    line-height: 1.65;
+    overflow-x: hidden;
+    position: relative;
+    min-height: 100vh;
+  }
+  a {
+    color: #2980b9;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+  a:hover {
+    color: #145a86;
+  }
+
+  /* Container */
+  .container {
+    max-width: 1100px;
+    margin: auto;
+    padding: 2.5rem 1.5rem 5rem;
+    background: rgba(240, 248, 255, 0.9);
+    border-radius: 20px;
+    box-shadow: 0 12px 25px rgba(44, 62, 80, 0.3);
+    position: relative;
+    z-index: 10;
+  }
+
+  /* Header */
+  header {
+    background: #2980b9;
+    color: white;
+    padding: 2rem 1rem;
+    text-align: center;
+    text-shadow: 0 1px 3px rgba(0,0,0,0.4);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+    position: sticky;
+    top: 0;
+    z-index: 20;
+  }
+  header h1 {
+    margin-bottom: 0.7rem;
+    font-size: 2.75rem;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+  header p {
+    font-size: 1.2rem;
+    font-weight: 600;
+    font-style: italic;
+  }
+
+  /* Sections */
+  section {
+    margin-bottom: 2.5rem;
+  }
+  section h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+    color: #2c3e50;
+    border-left: 5px solid #2980b9;
+    padding-left: 12px;
+    text-shadow: 0 1px 1px #a0b9d9;
+  }
+  section h3 {
+    margin-top: 1.5rem;
+    margin-bottom: 0.8rem;
+    color: #1a2e40;
+  }
+  section h4 {
+    margin-top: 1.1rem;
+    margin-bottom: 0.7rem;
+    color: #22577a;
+  }
+  section p {
+    margin-bottom: 1rem;
+    color: #2c3e50;
+  }
+  section ul {
+    margin-left: 2rem;
+    list-style-type: disc;
+    color: #1a3e5a;
+  }
+  section ul li {
+    margin-bottom: 0.5rem;
+  }
+
+  /* References styling */
+  section ul a {
+    color: #1f618d;
+    font-weight: 600;
+    text-decoration: underline;
+  }
+  section ul a:hover {
+    color: #154360;
+  }
+
+  /* Footer */
+  footer {
+    text-align: center;
+    padding: 1.5rem 0;
+    background: #2980b9;
+    color: white;
+    font-weight: 600;
+    box-shadow: 0 -4px 10px rgba(0,0,0,0.25);
+    position: relative;
+    z-index: 10;
+  }
+
+  /* Cloud & Leaf animations container */
+  #animation-wrapper {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    overflow: hidden;
+    z-index: 5;
+  }
+
+  /* Clouds */
+  .cloud {
+    position: absolute;
+    background: #dfe9f3;
+    background: linear-gradient(145deg, #f2f7fc, #c4d4ea);
+    border-radius: 50px;
+    box-shadow: 20px 20px 35px #a1b5ce, -10px -10px 20px #f3fbff;
+    opacity: 0.9;
+    filter: drop-shadow(0 0 6px #acbcd4aa);
+    will-change: transform;
+  }
+  .cloud:before, .cloud:after {
+    content: '';
+    position: absolute;
+    background: #e9f1fb;
+    border-radius: 50%;
+  }
+  .cloud:before {
+    width: 80%;
+    height: 80%;
+    top: 5px;
+    left: 15px;
+  }
+  .cloud:after {
+    width: 60%;
+    height: 60%;
+    top: 15px;
+    right: 25px;
+  }
+
+  /* Multiple cloud sizes */
+  .cloud-small {
+    width: 120px;
+    height: 60px;
+  }
+  .cloud-medium {
+    width: 180px;
+    height: 90px;
+  }
+  .cloud-large {
+    width: 280px;
+    height: 140px;
+  }
+
+  /* Leaf floating animation */
+  .leaf {
+    position: absolute;
+    pointer-events: none;
+    filter: drop-shadow(0 0 3px rgba(0,30,60,0.3));
+    opacity: 0.85;
+    animation-timing-function: ease-in-out;
+    animation-iteration-count: infinite;
+    will-change: transform;
+  }
+  /* Leaf colors & shapes */
+  .leaf svg {
+    fill: #1f618d;
+    filter: drop-shadow(0 1px 3px rgba(0,0,0,0.15));
+  }
+
+  /* Scrollbar style for container */
+  ::-webkit-scrollbar {
+    width: 9px;
+  }
+  ::-webkit-scrollbar-track {
+    background: #ccd6e0;
+  }
+  ::-webkit-scrollbar-thumb {
+    background: #2980b9;
+    border-radius: 10px;
+  }
+
+</style>
+</head>
+<body>
+<header>
+  <h1>Gases de Efecto Invernadero</h1>
+  <p>Definición, Función, Soluciones y Caso de Estudio en la Avenida del Ferrocarril de Santa Marta</p>
+</header>
+
+<div class="container" role="main" tabindex="0">
+  <section>
+    <h2>Introducción</h2>
+    <p>
+      El efecto invernadero es un proceso natural esencial para mantener temperaturas adecuadas en la Tierra. Los gases de efecto invernadero (GEI) son componentes atmosféricos que absorben y emiten radiación infrarroja, atrapando calor en la atmósfera (Instituto de Hidrología, Meteorología y Estudios Ambientales [IDEAM], s.f.). Ejemplos de GEI incluyen el dióxido de carbono (CO<sub>2</sub>), metano (CH<sub>4</sub>) y óxidos de nitrógeno (NO<sub>x</sub>). No obstante, las emisiones antropogénicas han alterado este equilibrio, provocando un calentamiento global con consecuencias ambientales significativas.
+    </p>
+  </section>
+
+  <section>
+    <h2>Resumen</h2>
+    <p>
+      Los gases de efecto invernadero (GEI) son componentes atmosféricos que retienen el calor en la atmósfera terrestre, desempeñando un papel crucial en la regulación del clima. Este proceso natural se ve intensificado por el aumento de sus concentraciones debido a actividades humanas, contribuyendo al cambio climático. Este documento explora la naturaleza de los GEI, su función, estrategias para su reducción y un análisis de su impacto en la Avenida del Ferrocarril de Santa Marta, Colombia.
+    </p>
+  </section>
+
+  <section>
+    <h2>Soluciones para Mitigar los Gases de Efecto Invernadero</h2>
+    <p>Diversas estrategias han sido propuestas y aplicadas para reducir las emisiones de GEI:</p>
+    <ul>
+      <li><strong>Transición a Energías Renovables:</strong> El uso de fuentes como la solar, eólica e hidroeléctrica disminuye la dependencia de combustibles fósiles y reduce las emisiones de CO<sub>2</sub> (SGS, 2023).</li>
+      <li><strong>Eficiencia Energética:</strong> Implementar tecnologías y prácticas que optimicen el consumo energético en sectores industriales, residenciales y de transporte contribuye a la reducción de emisiones (Territorio Profesional, s.f.).</li>
+      <li><strong>Agricultura y Ganadería Sostenibles:</strong> Adoptar prácticas agrícolas que minimicen el uso de fertilizantes nitrogenados y gestionen adecuadamente los residuos orgánicos puede disminuir las emisiones de N<sub>2</sub>O y CH<sub>4</sub> (Cadena SER, 2024).</li>
+      <li><strong>Captura y Almacenamiento de Carbono:</strong> Tecnologías que capturan CO<sub>2</sub> directamente de fuentes emisoras y lo almacenan en formaciones geológicas representan una solución prometedora (Temas Ambientales, 2023).</li>
+      <li><strong>Promoción del Transporte Sostenible:</strong> Fomentar el uso de transporte público, bicicletas y vehículos eléctricos reduce las emisiones del sector transporte (Renovables.blog, s.f.).</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Caso de Estudio: Avenida del Ferrocarril de Santa Marta, Colombia</h2>
+
+    <h3>Introducción</h3>
+    <p>
+      La Avenida del Ferrocarril de Santa Marta es una arteria vial crucial dentro de la estructura urbana de la ciudad. Su función principal es la de conectar diferentes sectores del casco urbano y servir como un eje logístico y de movilidad para miles de vehículos diariamente. Sin embargo, esta vitalidad conlleva un impacto ambiental significativo: la alta densidad vehicular genera un volumen considerable de emisiones de gases de efecto invernadero (GEI), especialmente dióxido de carbono (CO<sub>2</sub>), metano (CH<sub>4</sub>) y óxidos de nitrógeno (NO<sub>x</sub>), que deterioran la calidad del aire y contribuyen al cambio climático.
+    </p>
+    <p>
+      En este contexto, el corredor férreo Chiriguaná–Santa Marta aparece como una herramienta estratégica para enfrentar la problemática ambiental, al ofrecer una alternativa de transporte más eficiente y menos contaminante que el transporte terrestre por carretera.
+    </p>
+
+    <h3>1. Pasado: Origen de la Problemática y Desarrollo de Infraestructura</h3>
+    <p>
+      En las últimas décadas, el crecimiento urbano de Santa Marta y la falta de planificación integral del transporte urbano han convertido a la Avenida del Ferrocarril en un punto crítico de congestión. Esta vía, originalmente diseñada para soportar flujos moderados, se ha visto sobrepasada por el incremento en el número de vehículos particulares, buses, motocicletas y transporte de carga.
+    </p>
+    <p>
+      Además, la infraestructura peatonal y para modos de transporte alternativo como bicicletas ha sido históricamente insuficiente o inexistente. Esto ha provocado una fuerte dependencia del transporte motorizado, acentuando las emisiones de GEI en esta zona estratégica.
+    </p>
+    <p>
+      Durante este periodo, el transporte de mercancías se realizaba casi exclusivamente por carretera, lo cual elevaba la huella de carbono de sectores industriales, logísticos y comerciales. El corredor férreo Chiriguaná–Santa Marta existía, pero su uso era limitado y su infraestructura estaba en condiciones subóptimas.
+    </p>
+
+    <h3>2. Presente: Impacto Actual y Esfuerzos en Curso</h3>
+    <h4>Impacto de los GEI en la Avenida del Ferrocarril</h4>
+    <p>
+      Hoy en día, el impacto de los GEI en la Avenida del Ferrocarril es tangible. Las emisiones provenientes del alto tráfico vehicular afectan no solo el clima, sino también la calidad del aire local, causando problemas respiratorios, incremento de enfermedades cardiovasculares, y afectando la salud pública en general. Además, la contaminación del aire está deteriorando el entorno urbano, afectando áreas verdes, el mobiliario urbano y la calidad de vida de los residentes.
+    </p>
+    <p>
+      La congestión vehicular también se traduce en mayores tiempos de desplazamiento, mayor consumo de combustible y un aumento en la temperatura local (efecto isla de calor), todos fenómenos exacerbados por los gases contaminantes. Las emisiones continuas también están acelerando el desgaste de la infraestructura vial, ya que el calor y la presión vehicular generan daños más rápidos en el pavimento.
+    </p>
+
+    <h4>Iniciativas Actuales en Marcha</h4>
+    <p>
+      En respuesta, tanto el gobierno como el sector privado están tomando medidas para enfrentar esta crisis ambiental. El corredor férreo Chiriguaná–Santa Marta ha retomado relevancia como una vía esencial para el transporte de mercancías de manera más sostenible. En 2020, se transportaron por este corredor más de 35.5 millones de toneladas de carbón, reduciendo significativamente el número de camiones en carretera y, por ende, las emisiones asociadas.
+    </p>
+    <p>
+      Empresas como Bavaria han adoptado el transporte ferroviario para distribuir sus productos en la región Caribe, incluyendo Santa Marta. Esta estrategia empresarial permite reducir el uso de camiones, optimizar el consumo de combustible y disminuir su huella de carbono.
+    </p>
+    <p>
+      Además, diversas campañas de concienciación están siendo implementadas para educar a la ciudadanía sobre los efectos nocivos de los GEI y la necesidad urgente de adoptar hábitos de movilidad sostenibles.
+    </p>
+
+    <h3>3. Futuro: Proyecciones, Soluciones Sostenibles y Acciones Recomendadas</h3>
+    <h4>Rehabilitación del Corredor Férreo y Reducción de Emisiones</h4>
+    <p>
+      La rehabilitación del corredor férreo La Dorada–Chiriguaná–Santa Marta se proyecta como una solución estructural para mitigar las emisiones de GEI. Se estima que, con su puesta en funcionamiento a plena capacidad, se podría evitar la emisión de aproximadamente 112,100 toneladas de CO<sub>2</sub> equivalente por año para 2030, comparado con un escenario sin intervención.
+    </p>
+    <p>
+      El transporte ferroviario representa una reducción potencial de hasta el 75% de las emisiones de GEI por tonelada transportada en comparación con el transporte por carretera, lo que convierte a esta estrategia en una de las más efectivas dentro del panorama nacional para combatir el cambio climático.
+    </p>
+
+    <h4>Otras Medidas Propuestas para Santa Marta</h4>
+    <ul>
+      <li><strong>Modernización del Transporte Público:</strong> Invertir en buses eléctricos o de bajas emisiones, así como ampliar la cobertura y frecuencia del servicio público, fomentará su uso frente al vehículo particular.</li>
+      <li><strong>Desarrollo de Infraestructura Alternativa:</strong> Construcción de ciclovías seguras y peatonalización de tramos estratégicos. Esto impulsará una movilidad activa y saludable, reduciendo emisiones de forma directa.</li>
+      <li><strong>Implementación de Zonas de Bajas Emisiones (ZBE):</strong> Delimitar áreas donde el ingreso de vehículos contaminantes esté restringido o prohibido. Esto no solo mejora la calidad del aire, sino que desincentiva el uso de vehículos particulares.</li>
+      <li><strong>Educación y Concienciación Ambiental:</strong> Continuar e intensificar campañas educativas sobre la importancia de reducir la huella de carbono. Es clave involucrar a las comunidades en estos procesos para asegurar un cambio cultural y sostenible.</li>
+    </ul>
+  </section>
+
+  <section>
+    <h2>Conclusiones</h2>
+    <p>
+      La Avenida del Ferrocarril de Santa Marta simboliza tanto los desafíos como las oportunidades que enfrenta la ciudad en términos de sostenibilidad y calidad del aire. Su actual saturación vehicular ha generado un aumento considerable en las emisiones de GEI, afectando negativamente la salud pública, el medio ambiente urbano y la eficiencia de la infraestructura vial.
+    </p>
+    <p>
+      Sin embargo, la revitalización del corredor férreo Chiriguaná–Santa Marta, junto con la implementación de políticas urbanas sostenibles, puede transformar este panorama. Este corredor no solo es clave para descarbonizar el transporte de carga, sino que también representa un eje estratégico para cumplir con los compromisos ambientales del país.
+    </p>
+    <p>
+      En este proceso, la colaboración entre el gobierno, el sector privado y la ciudadanía será esencial. La apuesta por un transporte multimodal, limpio y eficiente puede convertir a Santa Marta en un ejemplo regional de cómo enfrentar los efectos del cambio climático desde el urbanismo y la movilidad sostenible.
+    </p>
+  </section>
+
+  <section>
+    <h2>Referencias</h2>
+    <ul>
+      <li>Cadena SER. (2024, octubre 29). ¿Cómo mitigar los gases de efecto invernadero que emiten la agricultura y ganadería de Castilla-La Mancha? <a href="https://cadenaser.com/castillalamancha/2024/10/29/como-mitigar-los-gases-de-efecto-invernadero-que-emiten-la-agricultura-y-ganaderia-de-castilla-la-mancha-ser-toledo/" target="_blank" rel="noopener">https://cadenaser.com/castillalamancha/2024/10/29/como-mitigar-los-gases-de-efecto-invernadero-que-emiten-la-agricultura-y-ganaderia-de-castilla-la-mancha-ser-toledo/</a></li>
+      <li>Instituto de Hidrología, Meteorología y Estudios Ambientales (IDEAM). (s.f.). ¿Qué son los gases de efecto invernadero? <a href="https://www.ideam.gov.co/atencion-y-servicios-a-la-ciudadania/preguntas-frecuentes/que-son-los-gases-de-efecto-invernadero" target="_blank" rel="noopener">https://www.ideam.gov.co/atencion-y-servicios-a-la-ciudadania/preguntas-frecuentes/que-son-los-gases-de-efecto-invernadero</a></li>
+      <li>National Geographic. (s.f.). Gases de efecto invernadero: qué son y cuáles son sus efectos. <a href="https://www.nationalgeographic.es/medio-ambiente/gases-efecto-invernadero-que-son-hacen" target="_blank" rel="noopener">https://www.nationalgeographic.es/medio-ambiente/gases-efecto-invernadero-que-son-hacen</a></li>
+      <li>Renovables.blog. (s.f.). Gases de Efecto Invernadero: Reducción para un Futuro Sostenible. <a href="https://renovables.blog/blog/gases-de-efecto-invernadero/" target="_blank" rel="noopener">https://renovables.blog/blog/gases-de-efecto-invernadero/</a></li>
+      <li>SGS. (2023, noviembre). Gases de Efecto Invernadero (GEI): ¿qué son y cómo reducirlos? <a href="https://www.sgs.com/es-pe/noticias/2023/11/importancia-gases-efecto-invernadero" target="_blank" rel="noopener">https://www.sgs.com/es-pe/noticias/2023/11/importancia-gases-efecto-invernadero</a></li>
+      <li>Temas Ambientales. (2023, enero). 10 Soluciones para el Efecto Invernadero. <a href="https://www.temasambientales.com/2023/01/10-soluciones-efecto.html" target="_blank" rel="noopener">https://www.temasambientales.com/2023/01/10-soluciones-efecto.html</a></li>
+      <li>Territorio Profesional. (s.f.). ¿Cómo reducir las emisiones de gases de efecto invernadero? <a href="https://territorioprofesional.com/como-reducir-las-emisiones-de-gases-de-efecto-invernadero/" target="_blank" rel="noopener">https://territorioprofesional.com/como-reducir-las-emisiones-de-gases-de-efecto-invernadero/</a></li>
+    </ul>
+  </section>
+</div>
+
+<footer>
+  &copy; 2024 Eco-Life S.A.S. Todos los Derechos Reservados.
+</footer>
+
+<!-- Animation wrapper -->
+<div id="animation-wrapper" aria-hidden="true">
+  <!-- Clouds -->
+  <div class="cloud cloud-large" style="top: 8%; left: -280px; animation: moveClouds 90s linear infinite;"></div>
+  <div class="cloud cloud-medium" style="top: 20%; left: -180px; animation: moveClouds 75s linear infinite 10s;"></div>
+  <div class="cloud cloud-small" style="top: 35%; left: -120px; animation: moveClouds 60s linear infinite 20s;"></div>
+  <div class="cloud cloud-large" style="top: 12%; left: -320px; animation: moveClouds 105s linear infinite 5s;"></div>
+  <div class="cloud cloud-medium" style="top: 28%; left: -200px; animation: moveClouds 80s linear infinite 15s;"></div>
+  
+  <!-- Leaves -->
+  <div class="leaf" style="width:40px; height:40px; top: 50%; left: 110%; animation: floatLeafX 25s linear infinite, floatLeafY 6s ease-in-out infinite; animation-delay: 0s;">
+    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M32 2S23 16 11 32c20-9 41 7 41 7S43 4 32 2z"/></svg>
+  </div>
+  <div class="leaf" style="width:30px; height:30px; top: 60%; left: 105%; animation: floatLeafX 22s linear infinite, floatLeafY 5s ease-in-out infinite; animation-delay: 5s;">
+    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M32 2S23 16 11 32c20-9 41 7 41 7S43 4 32 2z"/></svg>
+  </div>
+  <div class="leaf" style="width:35px; height:35px; top: 40%; left: 108%; animation: floatLeafX 28s linear infinite, floatLeafY 7s ease-in-out infinite; animation-delay: 8s;">
+    <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg" aria-hidden="true"><path d="M32 2S23 16 11 32c20-9 41 7 41 7S43 4 32 2z"/></svg>
+  </div>
+</div>
+
+<script>
+  // Cloud horizontal movement animation (keyframes injected dynamically for performance)
+  const styleSheet = document.styleSheets[0];
+  styleSheet.insertRule(`@keyframes moveClouds {
+    0% {transform: translateX(0);}
+    100% {transform: translateX(130vw);}
+  }`, styleSheet.cssRules.length);
+
+  // Leaf floating animations - vertical oscillation
+  styleSheet.insertRule(`@keyframes floatLeafY {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-20px); }
+  }`, styleSheet.cssRules.length);
+
+  // Leaf horizontal movement
+  styleSheet.insertRule(`@keyframes floatLeafX {
+    0% { transform: translateX(0) translateY(0); }
+    100% { transform: translateX(-130vw) translateY(0); }
+  }`, styleSheet.cssRules.length);
+</script>
+</body>
+</html>
+
